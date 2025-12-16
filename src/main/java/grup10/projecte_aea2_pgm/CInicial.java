@@ -14,6 +14,15 @@ public class CInicial {
         welcomeText.setText("Welcome to JavaFX Application!");
     }
 
+    private double obtainLatitudILongitud(String nomCiutat) {
+
+        String[][] headers = {
+                {"Accept", "application/json"}
+
+        };
+
+        Requester requester = new Requester( "GET", "https://geocode.maps.co/search?city=" + URLEncoder.encode(nomCiutat) );
+    }
 
 
 }
