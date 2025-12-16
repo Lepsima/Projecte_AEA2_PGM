@@ -15,14 +15,14 @@ public class Requester {
 
 
 
-    public Requester(String method, String endpoint, String body, String headers[][]) {
+    public Requester(String method, String endpoint, String body, String[][] headers) {
         this.method = method;
         this.endpoint = endpoint;
         this.body = body;
         this.headers = headers;
     }
 
-    public Requester(String method, String endpoint, String headers[][]) {
+    public Requester(String method, String endpoint, String[][] headers) {
         this.method = method;
         this.endpoint = endpoint;
         this.headers = headers;
