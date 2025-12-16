@@ -86,9 +86,8 @@ public class Requester {
 
             HttpRequest request = RequestBuilder.build();
 
-            HttpResponse response = client.send(request, HttpResponse.BodyHandlers.ofString());
-
-            this.responseBody = response.body().toString();
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            this.responseBody = response.body();
 
         } catch (Exception e) {
             e.printStackTrace();
