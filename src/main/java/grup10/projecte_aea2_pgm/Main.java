@@ -20,10 +20,12 @@ public class Main extends Application {
         stage.show();
     }
 
+    /*
     public static void main(String[] args) {
         //launch();
-        Backend backend = new Backend();
-        double[] coords = backend.obtainLatitudILongitud("Barcelona");
-        System.out.println("Latitud: " + coords[0] + ", Longitud: " + coords[1]);
+        //Backend backend = new Backend();
+        //double[] coords = backend.obtainLatitudILongitud("Barcelona");
+        //System.out.println("Latitud: " + coords[0] + ", Longitud: " + coords[1]);
     }
+    */
 }

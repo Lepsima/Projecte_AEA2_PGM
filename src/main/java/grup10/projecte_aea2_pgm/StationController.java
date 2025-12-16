@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import java.net.URLEncoder;
 
-public class CInicial {
+public class StationController {
     @FXML
     private Label welcomeText;
 
@@ -13,16 +13,4 @@ public class CInicial {
     protected void onHelloButtonClick() {
         welcomeText.setText("Welcome to JavaFX Application!");
     }
-
-    private double obtainLatitudILongitud(String nomCiutat) {
-
-        String[][] headers = {
-                {"Accept", "application/json"}
-
-        };
-
-        Requester requester = new Requester( "GET", "https://geocode.maps.co/search?city=" + URLEncoder.encode(nomCiutat) );
-    }
-
-
 }
