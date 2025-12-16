@@ -16,7 +16,7 @@ public class CInicial {
 
     private double obtainLatitudILongitud(String nomCiutat) {
 
-        String headers[][] = {
+        String[][] headers = {
                 {"Accept", "application/json"}
 
         };
