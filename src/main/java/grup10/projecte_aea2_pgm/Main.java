@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import grup10.projecte_aea2_pgm.Classes.Backend;
 
 import java.io.IOException;
 
@@ -18,6 +19,9 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        launch();
+        //launch();
+        Backend backend = new Backend();
+        double[] coords = backend.obtainLatitudILongitud("Barcelona");
+        System.out.println("Latitud: " + coords[0] + ", Longitud: " + coords[1]);
     }
 }
