@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     java
     application
@@ -44,6 +46,18 @@ dependencies {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+tasks.named<JavaExec>("run") {
+    val props = Properties()
+    val propsFile = rootProject.file("gradle.properties")
+
+    if (propsFile.exists()) {
+        props.load(propsFile.inputStream())
+        environment("OPENAQ_API_KEY", props.getProperty("OPENAQ_API_KEY") ?: "")
+    } else {
+        GradleException("No API key provided");
+    }
 }
 
 jlink {
