@@ -6,6 +6,7 @@ plugins {
     id("org.beryx.jlink") version "2.25.0"
 }
 
+
 group = "grup10"
 version = "1.0-SNAPSHOT"
 
@@ -36,6 +37,7 @@ javafx {
 }
 
 dependencies {
+    implementation("com.google.code.gson:gson:2.13.2")
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 }
@@ -51,3 +53,4 @@ jlink {
         name = "app"
     }
 }
+

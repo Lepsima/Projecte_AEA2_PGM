@@ -18,14 +18,13 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.setResizable(true);
         stage.show();
+
+        TEST_backend();
     }
 
-    /*
-    public static void main(String[] args) {
-        //launch();
-        //Backend backend = new Backend();
-        //double[] coords = backend.obtainLatitudILongitud("Barcelona");
-        //System.out.println("Latitud: " + coords[0] + ", Longitud: " + coords[1]);
+    private static void TEST_backend() {
+        Backend backend = new Backend();
+        double[] coords = backend.obtainLatitudILongitud("Barcelona");
+        System.out.println("Latitud: " + coords[0] + ", Longitud: " + coords[1]);
     }
-    */
 }
