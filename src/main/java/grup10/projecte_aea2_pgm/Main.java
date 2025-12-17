@@ -20,21 +20,5 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.setResizable(true);
         stage.show();
-
-        TEST_backend();
-    }
-
-    private static void TEST_backend() {
-        Backend backend = new Backend();
-        double[] coords = backend.obtainLatitudILongitud("Vilafranca del Penedès");
-
-        List<Station> data = backend.obtainEstacionsProperes(coords[0], coords[1], 15000);
-
-        for (Station station : data) {
-            System.out.println("Estació: " + station.nom);
-            System.out.println("Sensors: " + station.sensors);
-            System.out.println("-----");
-        }
-
     }
 }
