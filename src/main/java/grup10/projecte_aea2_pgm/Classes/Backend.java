@@ -34,7 +34,7 @@ public class Backend {
     private JsonObject obtainEstacioMesProper(double latitud, double longitud) {
 
         String headers[][] = {
-                {}
+                {},
                 {"Accept", "application/json"},
                 {"User-Agent", "App_Java_AEA2"}
         };

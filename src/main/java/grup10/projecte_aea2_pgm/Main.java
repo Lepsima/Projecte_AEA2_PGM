@@ -19,7 +19,7 @@ public class Main extends Application {
         stage.setResizable(true);
         stage.show();
 
-        TEST_backend();
+        //TEST_backend();
     }
 
     private static void TEST_backend() {
