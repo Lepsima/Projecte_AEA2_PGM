@@ -19,7 +19,6 @@ public class Main extends Application {
         stage.setTitle("Estat del aire");
         stage.setScene(scene);
         stage.resizableProperty().setValue(false);
-        stage.setResizable(true);
         stage.show();
     }
 }
