@@ -38,7 +38,7 @@ public class Backend {
     }
 
     public List<Station> obtainEstacionsProperes(double latitud, double longitud, int radius) {
-        String headers[][] = {
+        String[][] headers = {
                 {"X-API-Key", API_KEY_OPENAQ},
                 {"Accept", "application/json"},
                 {"User-Agent", "App_Java_AEA2"}

@@ -1,11 +1,14 @@
 package grup10.projecte_aea2_pgm;
 
+import grup10.projecte_aea2_pgm.Classes.Backend;
+import grup10.projecte_aea2_pgm.Classes.Station;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class StationController implements Initializable {
@@ -49,7 +52,20 @@ public class StationController implements Initializable {
         int mode = GetSelectedMode();
 
         if (mode != 0) return;
-        cityField.setText(String.format("%s, %s, %s", city, radius, mode));
+
+        Backend backend = new Backend();
+        double[] coords = backend.obtainLatitudILongitud(city);
+
+        List<Station> data = backend.obtainEstacionsProperes(coords[0], coords[1], radius);
+
+        StringBuilder showData = new StringBuilder();
+        for (Station station : data) {
+            showData.append("\nEstació: ").append(station.nom);
+            showData.append("\nSensors: ").append(station.sensors);
+            showData.append("\n-----");
+        }
+
+        output.setText(showData.toString());
     }
 
     private int GetSelectedMode() {
