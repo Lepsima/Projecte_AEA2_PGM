@@ -6,10 +6,12 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -26,27 +28,34 @@
           <padding>
               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
           </padding>
-         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Estat de l'aire en la teva ciutat" />
-         <TextField fx:id="cityField" promptText="Ciutat" />
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Estat de l'aire en la teva ciutat">
+            <font>
+               <Font name="System Bold" size="33.0" />
+            </font></Text>
+         <FlowPane prefHeight="20.0" prefWidth="560.0">
+            <children>
+               <TextField fx:id="cityField" prefHeight="26.0" prefWidth="469.0" promptText="Ciutat" />
+                  <Button fx:id="acceptButton" onAction="#OnAccept" prefHeight="26.0" prefWidth="77.0" text="Acceptar" />
+            </children>
+         </FlowPane>
           <SplitPane dividerPositions="0.2700587084148728, 0.7279843444227005" prefHeight="160.0" prefWidth="380.0">
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="158.0" prefWidth="146.0">
                   <RadioButton fx:id="modeButton0" layoutX="13.0" layoutY="23.0" mnemonicParsing="false" text="Estacions" />
                   <RadioButton fx:id="modeButton1" layoutX="13.0" layoutY="64.0" mnemonicParsing="false" text="Medicions" />
                   <RadioButton fx:id="modeButton2" layoutX="13.0" layoutY="105.0" mnemonicParsing="false" text="¿?" />
               </AnchorPane>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="132.0" prefWidth="64.0">
-                  <Button fx:id="acceptButton" layoutX="84.0" layoutY="26.0" onAction="#OnAccept" text="Acceptar" />
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="158.0" prefWidth="249.0">
+               <children>
+                  <Button fx:id="IPGeolocation" layoutX="8.0" layoutY="35.0" onAction="#OnAccept" text="Obtenir geolocalització automàticament" />
+                  <Label fx:id="IPData" layoutX="29.0" layoutY="78.0" prefHeight="65.0" prefWidth="192.0" />
+               </children>
               </AnchorPane>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="199.0">
                   <Text layoutX="21.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Radi (km)" />
                   <ComboBox fx:id="radiusDropdown" layoutX="14.0" layoutY="31.0" prefHeight="26.0" prefWidth="112.0" />
               </AnchorPane>
           </SplitPane>
-      
-          <Label fx:id="output" prefHeight="303.0" prefWidth="577.0">
-            <font>
-               <Font name="System Bold" size="21.0" />
-            </font></Label>
+         <TextArea fx:id="output" prefHeight="280.0" prefWidth="557.0" />
       </VBox>
    </children>
 </Pane>

@@ -3,13 +3,11 @@ package grup10.projecte_aea2_pgm.Classes;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import com.google.gson.*;
 
 public class Backend {
 
+    List<Object> data = new ArrayList<>();
     String API_KEY_OPENAQ = System.getenv("OPENAQ_API_KEY");
 
     private JsonArray gsonParser(String body) {
@@ -18,9 +16,9 @@ public class Backend {
 
         return jsonArray;
     }
-    public double[] obtainLatitudILongitud(String nomCiutat) {
+    public List<Object> obtainLatitudILongitud(String nomCiutat) {
 
-        String headers[][] = {
+        String[][] headers = {
                 {"Accept", "application/json"},
                 {"User-Agent", "App_Java_AEA2"}
         };
@@ -31,11 +29,37 @@ public class Backend {
 
         JsonArray jsonArray = gsonParser(response);
         JsonObject ciutat = jsonArray.get(0).getAsJsonObject();
-        double latitud = ciutat.get("lat").getAsDouble();
-        double longitud = ciutat.get("lon").getAsDouble();
 
-        return new double[]{latitud, longitud};
+        data.clear();
+        data.add(ciutat.get("lat").getAsDouble());
+        data.add(ciutat.get("lon").getAsDouble());
+
+        return data;
     }
+
+    public List<Object> obtainIPgeolocation() {
+
+        String[][] headers = {
+                {"Accept", "application/json"},
+                {"User-Agent", "App_Java_AEA2"}
+        };
+
+        Requester requester = new Requester( "GET", "http://ip-api.com/json/", headers);
+        String response = requester.getResponseBody();
+        System.out.println(response);
+
+        Gson gson = new Gson();
+        JsonObject jsonObject = gson.fromJson(response, JsonObject.class);
+        data.clear();
+        data.add(jsonObject.get("lat").getAsDouble());
+        data.add(jsonObject.get("lon").getAsDouble());
+        data.add(jsonObject.get("query").getAsString());
+        data.add(jsonObject.get("city").getAsString());
+        data.add(jsonObject.get("country").getAsString());
+
+        return data;
+    }
+
 
     public List<Station> obtainEstacionsProperes(double latitud, double longitud, int radius) {
         String[][] headers = {
